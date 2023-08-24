@@ -1,0 +1,18 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  max-width: 1300px;
+  margin: auto;
+  background: url('/public/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+  font-family: 'Bree Serif', serif;
+  /* font-family: 'Bricolage Grotesque', sans-serif; */
+}
+
+.card-img {
+  width: 200px;
+}

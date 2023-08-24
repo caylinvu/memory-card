@@ -1,0 +1,22 @@
+.header {
+  padding: 10px 0;
+  position: relative;
+}
+
+.logo-img {
+  width: 200px;
+  position: absolute;
+  left: 0;
+}
+
+.header-txt {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 35px 0;
+}
+
+.leaf-img {
+  width: 45px;
+}

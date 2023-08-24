@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import './styles/App.css';
+import Header from './components/Header';
 
 const fetchVillagers = async () => {
   try {
@@ -85,9 +86,12 @@ function App() {
 
   return (
     <div>
-      {currentVillagers.map((obj) => {
-        return <img src={obj.image_url} key={obj.id}></img>;
-      })}
+      <Header />
+      <div>
+        {currentVillagers.map((obj) => {
+          return <img src={obj.image_url} key={obj.id} className="card-img"></img>;
+        })}
+      </div>
     </div>
   );
 }
@@ -96,7 +100,7 @@ export default App;
 
 // TO DO
 
-// set up header component
+// remove extra fonts
 
 // set up score component
 
@@ -126,10 +130,16 @@ export default App;
 
 // add ability to choose easy, medium, or hard (5, 8, or 12 cards)
 
-//
+// maybe add a button you can click on to display pop up with instructions
+
+// add clicking on logo to go home OR maybe get rid of logo on game screen
+
+// maybe change background
 
 //
 
 // NOTES
 
 // random villager useEffect should only run on mount and each time a new game starts
+
+// add animal crossing logo to start up screen and have shrink to left side during game
