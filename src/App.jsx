@@ -96,9 +96,35 @@ export default App;
 
 // TO DO
 
+// set up header component
+
+// set up score component
+
+// set up card conainter component
+
+// set up card components
+
+// possibly move api logic around (to card container component???)
+
+// create buttons to display cards in
+
+// add basic styling to cards so images are all the same size
+
 // add function to randomize order of current villagers when displayed (should happen on mount and each time a card is clicked)
 
-//
+// add a way to keep track of and display the score
+
+// add a way to update the high score when game ends
+
+// maybe add local storage for high score?????
+
+// add current round display (ex: 1/5)
+
+// add ability to play again or quit
+
+// maybe add ability to continue playing with same score???
+
+// add ability to choose easy, medium, or hard (5, 8, or 12 cards)
 
 //
 
