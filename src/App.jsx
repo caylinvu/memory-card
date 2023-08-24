@@ -40,42 +40,52 @@ const fetchVillagers = async () => {
 
 const randomVillagers = (arr, n) => {
   let randomArr = [];
-  let arrLength = arr.length;
   let usedValues = [];
   for (let i = 0; i < n; i++) {
-    let randomValue = Math.floor(Math.random() * arrLength);
+    let randomValue = Math.floor(Math.random() * arr.length);
     while (usedValues.includes(randomValue)) {
-      randomValue = Math.floor(Math.random() * arrLength);
+      randomValue = Math.floor(Math.random() * arr.length);
     }
     randomArr.push(arr[randomValue]);
     usedValues.push(randomValue);
   }
-  // console.log(randomArr);
+  console.log(randomArr);
   return randomArr;
 };
 
 function App() {
-  const [villagers, setVillagers] = useState([]);
+  const [allVillagers, setAllVillagers] = useState([]);
+  const [currentVillagers, setCurrentVillagers] = useState([]);
 
-  const getVillagers = () => {
+  const getAllVillagers = () => {
     fetchVillagers()
       .then((response) => {
-        const currentVillagers = randomVillagers(response, 5);
-        setVillagers(currentVillagers);
-        return currentVillagers;
+        setAllVillagers(response);
+        console.log(response);
+        return response;
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
+  const getRandomVillagers = (arr, n) => {
+    setCurrentVillagers(randomVillagers(arr, n));
+  };
+
   useEffect(() => {
-    getVillagers();
+    getAllVillagers();
   }, []);
+
+  useEffect(() => {
+    if (allVillagers.length > 0) {
+      getRandomVillagers(allVillagers, 5);
+    }
+  }, [allVillagers]);
 
   return (
     <div>
-      {villagers.map((obj) => {
+      {currentVillagers.map((obj) => {
         return <img src={obj.image_url} key={obj.id}></img>;
       })}
     </div>
@@ -86,6 +96,14 @@ export default App;
 
 // TO DO
 
-// find card back and maybe card backgrounds????
+// add function to randomize order of current villagers when displayed (should happen on mount and each time a card is clicked)
 
-// figure out how to hide api key
+//
+
+//
+
+//
+
+// NOTES
+
+// random villager useEffect should only run on mount and each time a new game starts
