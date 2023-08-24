@@ -38,55 +38,48 @@ const fetchVillagers = async () => {
   }
 };
 
-function App() {
-  const [allVillagers, setAllVillagers] = useState([]);
-  const [currentVillagers, setCurrentVillagers] = useState([]);
+const randomVillagers = (arr, n) => {
+  let randomArr = [];
+  let arrLength = arr.length;
+  let usedValues = [];
+  for (let i = 0; i < n; i++) {
+    let randomValue = Math.floor(Math.random() * arrLength);
+    while (usedValues.includes(randomValue)) {
+      randomValue = Math.floor(Math.random() * arrLength);
+    }
+    randomArr.push(arr[randomValue]);
+    usedValues.push(randomValue);
+  }
+  // console.log(randomArr);
+  return randomArr;
+};
 
-  const getAllVillagers = () => {
+function App() {
+  const [villagers, setVillagers] = useState([]);
+
+  const getVillagers = () => {
     fetchVillagers()
       .then((response) => {
-        const villagers = response;
-        console.log(villagers);
-        setAllVillagers(villagers);
-        return villagers;
+        const currentVillagers = randomVillagers(response, 5);
+        setVillagers(currentVillagers);
+        return currentVillagers;
       })
       .catch((error) => {
         console.log(error);
       });
   };
 
-  // const randomVillagers = (arr, n) => {
-  //   let newArr = [];
-  //   let arrLength = arr.length;
-  //   let usedValues = [];
-  //   for (let i = 0; i < n; i++) {
-  //     let randomValue = Math.floor(Math.random() * arrLength);
-  //     while (usedValues.includes(randomValue)) {
-  //       randomValue = Math.floor(Math.random() * arrLength);
-  //     }
-  //     newArr.push(arr[randomValue]);
-  //     usedValues.push(randomValue);
-  //   }
-  //   // console.log(newArr);
-  //   // setCurrentVillagers(newArr);
-  //   return newArr;
-  // };
-
   useEffect(() => {
-    getAllVillagers();
+    getVillagers();
   }, []);
 
-  // useEffect(() => {
-  //   setCurrentVillagers(randomVillagers(allVillagers, 5));
-  // }, []);
-
-  // return (
-  //   <div>
-  //     {villagers.map((obj) => {
-  //       return <img src={obj.image_url} key={obj.id}></img>;
-  //     })}
-  //   </div>
-  // );
+  return (
+    <div>
+      {villagers.map((obj) => {
+        return <img src={obj.image_url} key={obj.id}></img>;
+      })}
+    </div>
+  );
 }
 
 export default App;
