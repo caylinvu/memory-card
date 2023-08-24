@@ -1,8 +1,21 @@
+import { useState } from 'react';
 import '../styles/Card.css';
 
-function Card({ key, imgUrl }) {
+function Card({ imgUrl, increaseScore, endGame }) {
+  const [isSelected, setIsSelected] = useState(false);
+
+  const handleClick = () => {
+    if (!isSelected) {
+      setIsSelected(true);
+      increaseScore();
+      // randomize cards
+    } else {
+      endGame();
+    }
+  };
+
   return (
-    <button key={key} className="card-btn">
+    <button className="card-btn" onClick={handleClick}>
       <img src={imgUrl} className="card-img" />
     </button>
   );

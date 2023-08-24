@@ -1,11 +1,11 @@
 import '../styles/ScoreContainer.css';
 
-function ScoreContainer() {
+function ScoreContainer({ score, highScore }) {
   return (
     <div className="score-container">
       <div className="scores">
-        <p>Score: 0</p>
-        <p>High Score: 0</p>
+        <p>Score: {score}</p>
+        <p>High Score: {highScore}</p>
       </div>
       <p>Round placeholder</p>
     </div>

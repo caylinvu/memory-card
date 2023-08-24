@@ -59,6 +59,9 @@ const randomVillagers = (arr, n) => {
 function App() {
   const [allVillagers, setAllVillagers] = useState([]);
   const [currentVillagers, setCurrentVillagers] = useState([]);
+  const [score, setScore] = useState(0);
+  const [highScore, setHighScore] = useState(0);
+  const [isGameOver, setIsGameOver] = useState(false);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -76,6 +79,17 @@ function App() {
     setCurrentVillagers(randomVillagers(arr, n));
   };
 
+  const increaseScore = () => {
+    setScore(score + 1);
+  };
+
+  const endGame = () => {
+    setIsGameOver(true);
+    console.log('game is over');
+    // implement end game logic
+    // will be a game over pop up where you can choose to play again or quit
+  };
+
   useEffect(() => {
     getAllVillagers();
   }, []);
@@ -89,8 +103,8 @@ function App() {
   return (
     <div>
       <Header />
-      <ScoreContainer />
-      <CardContainer villagers={currentVillagers} />
+      <ScoreContainer score={score} highScore={highScore} />
+      <CardContainer villagers={currentVillagers} increaseScore={increaseScore} endGame={endGame} />
     </div>
   );
 }
@@ -99,13 +113,9 @@ export default App;
 
 // TO DO
 
-// possibly move api logic around (to card container component???)
-
-// create buttons to display cards in
-
-// add basic styling to cards so images are all the same size
-
 // add function to randomize order of current villagers when displayed (should happen on mount and each time a card is clicked)
+
+// create a game over pop up
 
 // add a way to keep track of and display the score
 
@@ -132,6 +142,10 @@ export default App;
 // remove extra font
 
 // maybe move score to top right corner
+
+// add effect for mouseover on card
+
+// possibly move api logic around (to card container component???)
 
 //
 
