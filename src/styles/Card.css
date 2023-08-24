@@ -1,0 +1,10 @@
+.card-btn {
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.card-img {
+  width: 180px;
+  vertical-align: middle;
+}

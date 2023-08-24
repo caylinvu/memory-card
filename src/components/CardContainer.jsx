@@ -1,14 +1,11 @@
 import '../styles/CardContainer.css';
+import Card from './Card';
 
 function CardContainer({ villagers }) {
   return (
     <div className="card-container">
       {villagers.map((obj) => {
-        return (
-          <button key={obj.id} className="card-btn">
-            <img src={obj.image_url} className="card-img" />
-          </button>
-        );
+        return <Card key={obj.id} imgUrl={obj.image_url} />;
       })}
     </div>
   );

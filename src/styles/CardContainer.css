@@ -3,13 +3,3 @@
   justify-content: center;
   gap: 20px;
 }
-
-.card-btn {
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-}
-
-.card-img {
-  vertical-align: middle;
-}

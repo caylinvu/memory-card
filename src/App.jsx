@@ -99,10 +99,6 @@ export default App;
 
 // TO DO
 
-// set up card container component
-
-// set up card components
-
 // possibly move api logic around (to card container component???)
 
 // create buttons to display cards in
