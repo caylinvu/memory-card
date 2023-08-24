@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import './styles/App.css';
 import Header from './components/Header';
 import ScoreContainer from './components/ScoreContainer';
+import CardContainer from './components/CardContainer';
 
 const fetchVillagers = async () => {
   try {
@@ -89,11 +90,7 @@ function App() {
     <div>
       <Header />
       <ScoreContainer />
-      <div>
-        {currentVillagers.map((obj) => {
-          return <img src={obj.image_url} key={obj.id} className="card-img"></img>;
-        })}
-      </div>
+      <CardContainer villagers={currentVillagers} />
     </div>
   );
 }
@@ -102,7 +99,7 @@ export default App;
 
 // TO DO
 
-// set up card conainter component
+// set up card container component
 
 // set up card components
 
@@ -143,6 +140,9 @@ export default App;
 //
 
 // NOTES
+
+// ***** for now, leave API fetch in App component and pass currentVillager state down to CardContainer component
+// if end up not using currentVillager state anywhere else, can move to CardContainer component
 
 // random villager useEffect should only run on mount and each time a new game starts
 
