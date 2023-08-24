@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import './styles/App.css';
 import Header from './components/Header';
+import ScoreContainer from './components/ScoreContainer';
 
 const fetchVillagers = async () => {
   try {
@@ -87,6 +88,7 @@ function App() {
   return (
     <div>
       <Header />
+      <ScoreContainer />
       <div>
         {currentVillagers.map((obj) => {
           return <img src={obj.image_url} key={obj.id} className="card-img"></img>;
@@ -99,10 +101,6 @@ function App() {
 export default App;
 
 // TO DO
-
-// remove extra fonts
-
-// set up score component
 
 // set up card conainter component
 
@@ -135,6 +133,12 @@ export default App;
 // add clicking on logo to go home OR maybe get rid of logo on game screen
 
 // maybe change background
+
+// add loading screen while waiting for initial fetch
+
+// remove extra font
+
+// maybe move score to top right corner
 
 //
 
