@@ -95,8 +95,9 @@ function App() {
 
   const endGame = (status) => {
     setGameStatus(status);
-    // implement end game logic
-    // will be a game over pop up where you can choose to play again or quit
+    if (score > highScore) {
+      setHighScore(score);
+    }
   };
 
   const playAgain = () => {
@@ -149,15 +150,6 @@ export default App;
 
 // TO DO
 
-// change isGameOver to gameStatus
-
-// create a game over pop up with play again or quit buttons
-
-// *** GAME OVER if you lose by clicking wrong card
-// *** YOU WIN if score = totalRounds
-
-// add a way to keep track of and display the score
-
 // add a way to update the high score when game ends
 
 // maybe add local storage for high score?????
@@ -167,6 +159,10 @@ export default App;
 // add ability to play again or quit
 
 // maybe add ability to continue playing with same score???
+
+// add start popup
+
+// add quit button to end game popup
 
 // add ability to choose easy, medium, or hard (5, 8, or 12 cards)
 
