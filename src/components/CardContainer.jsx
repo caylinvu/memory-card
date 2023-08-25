@@ -1,7 +1,14 @@
 import '../styles/CardContainer.css';
 import Card from './Card';
 
-function CardContainer({ villagers, increaseScore, endGame, shuffleCards, score, totalRounds }) {
+function CardContainer({
+  villagers,
+  increaseScore,
+  endGame,
+  shuffleCards,
+  cardsShowing,
+  setCardsShowing,
+}) {
   return (
     <div className="card-container">
       {villagers.map((obj) => {
@@ -12,8 +19,8 @@ function CardContainer({ villagers, increaseScore, endGame, shuffleCards, score,
             increaseScore={increaseScore}
             endGame={endGame}
             shuffleCards={shuffleCards}
-            score={score}
-            totalRounds={totalRounds}
+            cardsShowing={cardsShowing}
+            setCardsShowing={setCardsShowing}
           />
         );
       })}

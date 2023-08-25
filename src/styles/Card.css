@@ -2,11 +2,54 @@
   border: none;
   border-radius: 10px;
   cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
-.card-img {
+.card-btn:active {
+  transform: scale(0.95);
+}
+
+.card-img,
+.card-back-img {
   width: 175px;
   height: 245.13px;
   vertical-align: middle;
   border-radius: 10px;
+}
+
+.card {
+  width: 175px;
+  height: 245.13px;
+  perspective: 1000px;
+}
+
+.card.back .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-inner {
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.85s;
+  animation: flip-card 0.85s;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  backface-visibility: hidden;
+}
+
+@keyframes flip-card {
+  from {
+    transform: rotateY(180deg);
+    pointer-events: none;
+  }
+  to {
+    transform: rotateY(0deg);
+  }
 }

@@ -54,7 +54,7 @@ const randomVillagers = (arr, n) => {
     randomArr.push(arr[randomValue]);
     usedValues.push(randomValue);
   }
-  console.log(randomArr);
+  // console.log(randomArr);
   return randomArr;
 };
 
@@ -65,12 +65,13 @@ function App() {
   const [highScore, setHighScore] = useState(0);
   const [gameStatus, setGameStatus] = useState('start');
   const [cardQuantity, setCardQuantity] = useState(null);
+  const [cardsShowing, setCardsShowing] = useState(false);
 
   const getAllVillagers = () => {
     fetchVillagers()
       .then((response) => {
         setAllVillagers(response);
-        console.log(response);
+        // console.log(response);
         return response;
       })
       .catch((error) => {
@@ -97,6 +98,7 @@ function App() {
   const endGame = useCallback(
     (status) => {
       setGameStatus(status);
+      setCardsShowing(false);
       if (score > highScore) {
         setHighScore(score);
       }
@@ -109,6 +111,7 @@ function App() {
     setCardQuantity(n);
     getRandomVillagers(allVillagers, n);
     setScore(0);
+    setCardsShowing(true);
   };
 
   const quit = () => {
@@ -145,6 +148,8 @@ function App() {
             increaseScore={increaseScore}
             endGame={endGame}
             shuffleCards={shuffleCards}
+            cardsShowing={cardsShowing}
+            setCardsShowing={setCardsShowing}
           />
         </>
       )}
