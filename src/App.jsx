@@ -150,16 +150,6 @@ export default App;
 
 // TO DO
 
-// add a way to update the high score when game ends
-
-// maybe add local storage for high score?????
-
-// add current round display (ex: 1/5)
-
-// add ability to play again or quit
-
-// maybe add ability to continue playing with same score???
-
 // add start popup
 
 // add quit button to end game popup
@@ -169,8 +159,6 @@ export default App;
 // maybe add a button you can click on to display pop up with instructions
 
 // add clicking on logo to go home OR maybe get rid of logo on game screen
-
-// maybe change background
 
 // add loading screen while waiting for initial fetch
 
@@ -183,6 +171,10 @@ export default App;
 // possibly move api logic around (to card container component???)
 
 // find game over images (happy / sad) OR GIFS
+
+// maybe add local storage for high score?????
+
+// maybe add ability to continue playing with same score???
 
 //
 
