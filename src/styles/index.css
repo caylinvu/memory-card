@@ -14,3 +14,8 @@ body {
   /* font-size: 25px; */
   /* font-family: 'Bricolage Grotesque', sans-serif; */
 }
+
+button {
+  color: inherit;
+  font-family: inherit;
+}

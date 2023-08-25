@@ -3,6 +3,7 @@ import './styles/App.css';
 import Header from './components/Header';
 import ScoreContainer from './components/ScoreContainer';
 import CardContainer from './components/CardContainer';
+import StartScreen from './components/StartScreen';
 import EndPopup from './components/EndPopup';
 
 const fetchVillagers = async () => {
@@ -62,8 +63,8 @@ function App() {
   const [currentVillagers, setCurrentVillagers] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [gameStatus, setGameStatus] = useState('playing');
-  const [cardQuantity, setCardQuantity] = useState(5);
+  const [gameStatus, setGameStatus] = useState('start');
+  const [cardQuantity, setCardQuantity] = useState(null);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -103,9 +104,10 @@ function App() {
     [highScore, score],
   );
 
-  const playAgain = () => {
+  const playGame = (n) => {
     setGameStatus('playing');
-    getRandomVillagers(allVillagers, cardQuantity);
+    setCardQuantity(n);
+    getRandomVillagers(allVillagers, n);
     setScore(0);
   };
 
@@ -113,13 +115,6 @@ function App() {
   useEffect(() => {
     getAllVillagers();
   }, []);
-
-  // get a random villager set depending on totalRounds and ***game status***
-  useEffect(() => {
-    if (allVillagers.length > 0) {
-      getRandomVillagers(allVillagers, cardQuantity);
-    }
-  }, [allVillagers, cardQuantity]);
 
   // check if game is over by comparing score to totalRounds
   useEffect(() => {
@@ -130,21 +125,36 @@ function App() {
 
   return (
     <div>
-      <Header />
-      <ScoreContainer
-        score={score}
-        highScore={highScore}
-        totalRounds={cardQuantity}
-        endGame={endGame}
-      />
-      <CardContainer
-        villagers={currentVillagers}
-        increaseScore={increaseScore}
-        endGame={endGame}
-        shuffleCards={shuffleCards}
-      />
-      {gameStatus == 'win' && <EndPopup text="You win!" score={score} playAgain={playAgain} />}
-      {gameStatus == 'lose' && <EndPopup text="Game over!" score={score} playAgain={playAgain} />}
+      {gameStatus == 'start' ? (
+        <StartScreen playGame={playGame} />
+      ) : (
+        <>
+          <Header />
+          <ScoreContainer
+            score={score}
+            highScore={highScore}
+            totalRounds={cardQuantity}
+            endGame={endGame}
+          />
+          <CardContainer
+            villagers={currentVillagers}
+            increaseScore={increaseScore}
+            endGame={endGame}
+            shuffleCards={shuffleCards}
+          />
+        </>
+      )}
+      {gameStatus == 'win' && (
+        <EndPopup text="You win!" score={score} playAgain={playGame} cardQuantity={cardQuantity} />
+      )}
+      {gameStatus == 'lose' && (
+        <EndPopup
+          text="Game over!"
+          score={score}
+          playAgain={playGame}
+          cardQuantity={cardQuantity}
+        />
+      )}
     </div>
   );
 }
