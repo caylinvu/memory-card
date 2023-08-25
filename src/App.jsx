@@ -79,6 +79,14 @@ function App() {
     setCurrentVillagers(randomVillagers(arr, n));
   };
 
+  const shuffleCards = () => {
+    let shuffled = currentVillagers
+      .map((obj) => ({ obj, sort: Math.random() }))
+      .sort((a, b) => a.sort - b.sort)
+      .map(({ obj }) => obj);
+    setCurrentVillagers(shuffled);
+  };
+
   const increaseScore = () => {
     setScore(score + 1);
   };
@@ -104,7 +112,12 @@ function App() {
     <div>
       <Header />
       <ScoreContainer score={score} highScore={highScore} />
-      <CardContainer villagers={currentVillagers} increaseScore={increaseScore} endGame={endGame} />
+      <CardContainer
+        villagers={currentVillagers}
+        increaseScore={increaseScore}
+        endGame={endGame}
+        shuffleCards={shuffleCards}
+      />
     </div>
   );
 }

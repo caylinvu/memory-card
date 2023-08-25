@@ -1,7 +1,7 @@
 import '../styles/CardContainer.css';
 import Card from './Card';
 
-function CardContainer({ villagers, increaseScore, endGame }) {
+function CardContainer({ villagers, increaseScore, endGame, shuffleCards }) {
   return (
     <div className="card-container">
       {villagers.map((obj) => {
@@ -11,6 +11,7 @@ function CardContainer({ villagers, increaseScore, endGame }) {
             imgUrl={obj.image_url}
             increaseScore={increaseScore}
             endGame={endGame}
+            shuffleCards={shuffleCards}
           />
         );
       })}

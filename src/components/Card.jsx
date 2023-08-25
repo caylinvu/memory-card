@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import '../styles/Card.css';
 
-function Card({ imgUrl, increaseScore, endGame }) {
+function Card({ imgUrl, increaseScore, endGame, shuffleCards }) {
   const [isSelected, setIsSelected] = useState(false);
 
   const handleClick = () => {
     if (!isSelected) {
       setIsSelected(true);
       increaseScore();
-      // randomize cards
+      shuffleCards();
     } else {
       endGame();
     }
