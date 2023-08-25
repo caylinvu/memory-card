@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import './styles/App.css';
 import Header from './components/Header';
 import ScoreContainer from './components/ScoreContainer';
@@ -63,7 +63,7 @@ function App() {
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
   const [gameStatus, setGameStatus] = useState('playing');
-  const [totalRounds, setTotalRounds] = useState(5);
+  const [cardQuantity, setCardQuantity] = useState(5);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -93,16 +93,19 @@ function App() {
     setScore(score + 1);
   };
 
-  const endGame = (status) => {
-    setGameStatus(status);
-    if (score > highScore) {
-      setHighScore(score);
-    }
-  };
+  const endGame = useCallback(
+    (status) => {
+      setGameStatus(status);
+      if (score > highScore) {
+        setHighScore(score);
+      }
+    },
+    [highScore, score],
+  );
 
   const playAgain = () => {
     setGameStatus('playing');
-    getRandomVillagers(allVillagers, totalRounds);
+    getRandomVillagers(allVillagers, cardQuantity);
     setScore(0);
   };
 
@@ -114,16 +117,16 @@ function App() {
   // get a random villager set depending on totalRounds and ***game status***
   useEffect(() => {
     if (allVillagers.length > 0) {
-      getRandomVillagers(allVillagers, totalRounds);
+      getRandomVillagers(allVillagers, cardQuantity);
     }
-  }, [allVillagers, totalRounds]);
+  }, [allVillagers, cardQuantity]);
 
   // check if game is over by comparing score to totalRounds
   useEffect(() => {
-    if (score == totalRounds) {
+    if (score == cardQuantity) {
       endGame('win');
     }
-  }, [score, totalRounds]);
+  }, [score, cardQuantity, endGame]);
 
   return (
     <div>
@@ -131,7 +134,7 @@ function App() {
       <ScoreContainer
         score={score}
         highScore={highScore}
-        totalRounds={totalRounds}
+        totalRounds={cardQuantity}
         endGame={endGame}
       />
       <CardContainer
