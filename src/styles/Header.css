@@ -6,7 +6,7 @@
 .logo-img {
   width: 200px;
   position: absolute;
-  left: 0;
+  left: 15px;
 }
 
 .header-txt {
@@ -14,9 +14,20 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding: 35px 0 10px;
+  padding: 20px 0 5px;
 }
 
 .leaf-img {
   width: 45px;
+}
+
+@media (max-width: 750px) {
+  .logo-img {
+    position: static;
+    left: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 225px;
+  }
 }

@@ -1,12 +1,12 @@
 .score-container {
   text-align: center;
   font-size: 25px;
-  padding-bottom: 40px;
+  padding-bottom: 15px;
 }
 
 .scores {
   display: flex;
   justify-content: center;
   gap: 30px;
-  padding-bottom: 20px;
+  padding-bottom: 13px;
 }
