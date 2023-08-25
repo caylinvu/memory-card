@@ -3,6 +3,7 @@ import './styles/App.css';
 import Header from './components/Header';
 import ScoreContainer from './components/ScoreContainer';
 import CardContainer from './components/CardContainer';
+import EndPopup from './components/EndPopup';
 
 const fetchVillagers = async () => {
   try {
@@ -61,7 +62,8 @@ function App() {
   const [currentVillagers, setCurrentVillagers] = useState([]);
   const [score, setScore] = useState(0);
   const [highScore, setHighScore] = useState(0);
-  const [isGameOver, setIsGameOver] = useState(false);
+  const [gameStatus, setGameStatus] = useState('playing');
+  const [totalRounds, setTotalRounds] = useState(5);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -91,33 +93,54 @@ function App() {
     setScore(score + 1);
   };
 
-  const endGame = () => {
-    setIsGameOver(true);
-    console.log('game is over');
+  const endGame = (status) => {
+    setGameStatus(status);
     // implement end game logic
     // will be a game over pop up where you can choose to play again or quit
   };
 
+  const playAgain = () => {
+    setGameStatus('playing');
+    getRandomVillagers(allVillagers, totalRounds);
+    setScore(0);
+  };
+
+  // run API call once on initial component mount
   useEffect(() => {
     getAllVillagers();
   }, []);
 
+  // get a random villager set depending on totalRounds and ***game status***
   useEffect(() => {
     if (allVillagers.length > 0) {
-      getRandomVillagers(allVillagers, 5);
+      getRandomVillagers(allVillagers, totalRounds);
     }
-  }, [allVillagers]);
+  }, [allVillagers, totalRounds]);
+
+  // check if game is over by comparing score to totalRounds
+  useEffect(() => {
+    if (score == totalRounds) {
+      endGame('win');
+    }
+  }, [score, totalRounds]);
 
   return (
     <div>
       <Header />
-      <ScoreContainer score={score} highScore={highScore} />
+      <ScoreContainer
+        score={score}
+        highScore={highScore}
+        totalRounds={totalRounds}
+        endGame={endGame}
+      />
       <CardContainer
         villagers={currentVillagers}
         increaseScore={increaseScore}
         endGame={endGame}
         shuffleCards={shuffleCards}
       />
+      {gameStatus == 'win' && <EndPopup text="You win!" score={score} playAgain={playAgain} />}
+      {gameStatus == 'lose' && <EndPopup text="Game over!" score={score} playAgain={playAgain} />}
     </div>
   );
 }
@@ -126,9 +149,12 @@ export default App;
 
 // TO DO
 
-// add function to randomize order of current villagers when displayed (should happen on mount and each time a card is clicked)
+// change isGameOver to gameStatus
 
-// create a game over pop up
+// create a game over pop up with play again or quit buttons
+
+// *** GAME OVER if you lose by clicking wrong card
+// *** YOU WIN if score = totalRounds
 
 // add a way to keep track of and display the score
 
@@ -159,6 +185,8 @@ export default App;
 // add effect for mouseover on card
 
 // possibly move api logic around (to card container component???)
+
+// find game over images (happy / sad) OR GIFS
 
 //
 

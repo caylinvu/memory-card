@@ -1,13 +1,15 @@
 import '../styles/ScoreContainer.css';
 
-function ScoreContainer({ score, highScore }) {
+function ScoreContainer({ score, highScore, totalRounds }) {
   return (
     <div className="score-container">
       <div className="scores">
         <p>Score: {score}</p>
         <p>High Score: {highScore}</p>
       </div>
-      <p>Round placeholder</p>
+      <p>
+        {score}/{totalRounds}
+      </p>
     </div>
   );
 }

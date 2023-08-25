@@ -10,7 +10,7 @@ function Card({ imgUrl, increaseScore, endGame, shuffleCards }) {
       increaseScore();
       shuffleCards();
     } else {
-      endGame();
+      endGame('lose');
     }
   };
 
