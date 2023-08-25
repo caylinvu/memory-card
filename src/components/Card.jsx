@@ -16,7 +16,7 @@ function Card({ imgUrl, increaseScore, endGame, shuffleCards }) {
 
   return (
     <button className="card-btn" onClick={handleClick}>
-      <img src={imgUrl} className="card-img" />
+      <img src={imgUrl} className="card-img" draggable={false} />
     </button>
   );
 }

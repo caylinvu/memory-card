@@ -111,6 +111,10 @@ function App() {
     setScore(0);
   };
 
+  const quit = () => {
+    setGameStatus('start');
+  };
+
   // run API call once on initial component mount
   useEffect(() => {
     getAllVillagers();
@@ -145,13 +149,20 @@ function App() {
         </>
       )}
       {gameStatus == 'win' && (
-        <EndPopup text="You win!" score={score} playAgain={playGame} cardQuantity={cardQuantity} />
+        <EndPopup
+          text="You win!"
+          score={score}
+          playAgain={playGame}
+          quit={quit}
+          cardQuantity={cardQuantity}
+        />
       )}
       {gameStatus == 'lose' && (
         <EndPopup
           text="Game over!"
           score={score}
           playAgain={playGame}
+          quit={quit}
           cardQuantity={cardQuantity}
         />
       )}
@@ -162,12 +173,6 @@ function App() {
 export default App;
 
 // TO DO
-
-// add start popup
-
-// add quit button to end game popup
-
-// add ability to choose easy, medium, or hard (5, 8, or 12 cards)
 
 // maybe add a button you can click on to display pop up with instructions
 
@@ -188,6 +193,8 @@ export default App;
 // maybe add local storage for high score?????
 
 // maybe add ability to continue playing with same score???
+
+// add transitions to pages!!!!
 
 //
 

@@ -1,7 +1,7 @@
 import '../styles/EndPopup.css';
 import Button from './Button';
 
-function EndPopup({ text, score, playAgain, cardQuantity }) {
+function EndPopup({ text, score, playAgain, quit, cardQuantity }) {
   return (
     <div className="popup-container">
       <div className="blocker"></div>
@@ -13,8 +13,7 @@ function EndPopup({ text, score, playAgain, cardQuantity }) {
           btnClass="play-again-btn"
           handleClick={() => playAgain(cardQuantity)}
         />
-        {/* <Button btnLabel="Quit" btnClass="quit-btn" /> */}
-        {/* IMPLEMENT QUIT BUTTON AFTER ADDING START MENU (QUIT TO START MENU) */}
+        <Button btnLabel="Quit" btnClass="quit-btn" handleClick={quit} />
       </div>
     </div>
   );
