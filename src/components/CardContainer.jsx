@@ -10,6 +10,7 @@ function CardContainer({
   setCardsShowing,
   score,
   cardQuantity,
+  setShowHelp,
 }) {
   return (
     <div className="card-container">
@@ -25,6 +26,7 @@ function CardContainer({
             setCardsShowing={setCardsShowing}
             score={score}
             cardQuantity={cardQuantity}
+            setShowHelp={setShowHelp}
           />
         );
       })}

@@ -10,10 +10,12 @@ function Card({
   setCardsShowing,
   score,
   cardQuantity,
+  setShowHelp,
 }) {
   const [isSelected, setIsSelected] = useState(false);
 
   async function handleClick() {
+    setShowHelp(false);
     if (!isSelected) {
       setCardsShowing(false);
       setIsSelected(true);

@@ -6,6 +6,7 @@ import CardContainer from './components/CardContainer';
 import StartScreen from './components/StartScreen';
 import EndPopup from './components/EndPopup';
 import LoadingScreen from './components/LoadingScreen';
+import ShowHelp from './components/ShowHelp';
 
 const fetchVillagers = async () => {
   try {
@@ -67,6 +68,7 @@ function App() {
   const [gameStatus, setGameStatus] = useState('start');
   const [cardQuantity, setCardQuantity] = useState(null);
   const [cardsShowing, setCardsShowing] = useState(false);
+  const [showHelp, setShowHelp] = useState(false);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -124,6 +126,11 @@ function App() {
 
   const quit = () => {
     setGameStatus('start');
+    setShowHelp(false);
+  };
+
+  const clickHelp = () => {
+    setShowHelp(!showHelp);
   };
 
   // run API call once on initial component mount
@@ -146,7 +153,7 @@ function App() {
         <LoadingScreen />
       ) : (
         <>
-          <Header quit={quit} />
+          <Header quit={quit} clickHelp={clickHelp} />
           <ScoreContainer
             score={score}
             highScore={highScore}
@@ -162,6 +169,7 @@ function App() {
             setCardsShowing={setCardsShowing}
             score={score}
             cardQuantity={cardQuantity}
+            setShowHelp={setShowHelp}
           />
         </>
       )}
@@ -187,6 +195,7 @@ function App() {
           gifClass="lose-gif"
         />
       )}
+      {showHelp && <ShowHelp />}
     </div>
   );
 }
@@ -197,17 +206,7 @@ export default App;
 
 // maybe add a button you can click on to display pop up with instructions
 
-// add clicking on logo to go home OR maybe get rid of logo on game screen
-
-// add loading screen while waiting for initial fetch
-
-// remove extra font
-
-// maybe move score to top right corner
-
 // possibly move api logic around (to card container component???)
-
-// find game over images (happy / sad) OR GIFS
 
 // maybe add local storage for high score?????
 
@@ -216,6 +215,8 @@ export default App;
 // add transitions to pages!!!!
 
 // figure out why some images don't load immediately
+
+// maybe remove loading screen???
 
 //
 

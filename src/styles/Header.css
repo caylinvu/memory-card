@@ -15,6 +15,29 @@
   transform: scale(1.07);
 }
 
+.help-btn {
+  position: absolute;
+  right: 20px;
+  top: 35px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-size: 26px;
+  width: 48px;
+  height: 48px;
+  border: none;
+  background-color: #ffd050;
+  box-shadow: 0px 0px 5px #c09c7c;
+  transition: transform, 0.3s, linear, 0.25s;
+}
+
+.help-btn:hover {
+  transform: scale(1.1);
+}
+
+.help-btn:active {
+  transform: scale(0.9);
+}
+
 .header-txt {
   display: flex;
   align-items: center;
@@ -35,5 +58,16 @@
     margin-left: auto;
     margin-right: auto;
     width: 225px;
+  }
+
+  .help-btn {
+    position: static;
+    right: auto;
+    top: auto;
+    display: block;
+    margin: 10px auto;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
   }
 }
