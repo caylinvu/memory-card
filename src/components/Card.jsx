@@ -1,7 +1,16 @@
 import { useState } from 'react';
 import '../styles/Card.css';
 
-function Card({ imgUrl, increaseScore, endGame, shuffleCards, cardsShowing, setCardsShowing }) {
+function Card({
+  imgUrl,
+  increaseScore,
+  endGame,
+  shuffleCards,
+  cardsShowing,
+  setCardsShowing,
+  score,
+  cardQuantity,
+}) {
   const [isSelected, setIsSelected] = useState(false);
 
   async function handleClick() {
@@ -9,10 +18,12 @@ function Card({ imgUrl, increaseScore, endGame, shuffleCards, cardsShowing, setC
       setCardsShowing(false);
       setIsSelected(true);
       increaseScore();
-      setTimeout(() => {
-        shuffleCards();
-        setCardsShowing(true);
-      }, 800);
+      if (score + 1 < cardQuantity) {
+        setTimeout(() => {
+          shuffleCards();
+          setCardsShowing(true);
+        }, 800);
+      }
     } else {
       endGame('lose');
     }

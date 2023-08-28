@@ -160,6 +160,8 @@ function App() {
             shuffleCards={shuffleCards}
             cardsShowing={cardsShowing}
             setCardsShowing={setCardsShowing}
+            score={score}
+            cardQuantity={cardQuantity}
           />
         </>
       )}
@@ -194,8 +196,6 @@ export default App;
 // TO DO
 
 // style loading screen
-
-// style end game screen
 
 // figure out why some images don't load immediately
 

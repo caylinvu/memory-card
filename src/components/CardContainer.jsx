@@ -8,6 +8,8 @@ function CardContainer({
   shuffleCards,
   cardsShowing,
   setCardsShowing,
+  score,
+  cardQuantity,
 }) {
   return (
     <div className="card-container">
@@ -21,6 +23,8 @@ function CardContainer({
             shuffleCards={shuffleCards}
             cardsShowing={cardsShowing}
             setCardsShowing={setCardsShowing}
+            score={score}
+            cardQuantity={cardQuantity}
           />
         );
       })}
