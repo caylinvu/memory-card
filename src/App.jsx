@@ -5,6 +5,7 @@ import ScoreContainer from './components/ScoreContainer';
 import CardContainer from './components/CardContainer';
 import StartScreen from './components/StartScreen';
 import EndPopup from './components/EndPopup';
+import LoadingScreen from './components/LoadingScreen';
 
 const fetchVillagers = async () => {
   try {
@@ -106,13 +107,20 @@ function App() {
     [highScore, score],
   );
 
-  const playGame = (n) => {
-    setGameStatus('playing');
+  async function playGame(n) {
+    setGameStatus('loading');
     setCardQuantity(n);
-    getRandomVillagers(allVillagers, n);
     setScore(0);
-    setCardsShowing(true);
-  };
+    getRandomVillagers(allVillagers, n);
+
+    setTimeout(() => {
+      setGameStatus('playing');
+    }, 800);
+
+    setTimeout(() => {
+      setCardsShowing(true);
+    }, 800);
+  }
 
   const quit = () => {
     setGameStatus('start');
@@ -134,6 +142,8 @@ function App() {
     <div>
       {gameStatus == 'start' ? (
         <StartScreen playGame={playGame} />
+      ) : gameStatus == 'loading' ? (
+        <LoadingScreen />
       ) : (
         <>
           <Header />
@@ -160,6 +170,8 @@ function App() {
           playAgain={playGame}
           quit={quit}
           cardQuantity={cardQuantity}
+          gifUrl="/win.gif"
+          gifClass="win-gif"
         />
       )}
       {gameStatus == 'lose' && (
@@ -169,6 +181,8 @@ function App() {
           playAgain={playGame}
           quit={quit}
           cardQuantity={cardQuantity}
+          gifUrl="/lose.gif"
+          gifClass="lose-gif"
         />
       )}
     </div>
@@ -179,6 +193,12 @@ export default App;
 
 // TO DO
 
+// style loading screen
+
+// style end game screen
+
+// figure out why some images don't load immediately
+
 // maybe add a button you can click on to display pop up with instructions
 
 // add clicking on logo to go home OR maybe get rid of logo on game screen
@@ -188,8 +208,6 @@ export default App;
 // remove extra font
 
 // maybe move score to top right corner
-
-// add effect for mouseover on card
 
 // possibly move api logic around (to card container component???)
 

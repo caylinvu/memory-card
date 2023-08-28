@@ -13,8 +13,54 @@
   left: 50%;
   transform: translate(-50%, -50%);
   border-radius: 10px;
-  background-color: white;
-  padding: 20px 40px;
+  background-color: #a0d3ca;
+  padding: 30px 60px;
   text-align: center;
   font-size: 25px;
+}
+
+.end-text {
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.win-gif,
+.lose-gif {
+  border-radius: 10px;
+  margin: 10px 0px;
+}
+
+.win-gif {
+  width: 275px;
+}
+
+.lose-gif {
+  width: 200px;
+}
+
+.end-score {
+  font-size: 26px;
+}
+
+.btns {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 25px;
+}
+
+.btns button {
+  font-size: 22px;
+  padding: 5px 13px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ffd050;
+  box-shadow: 0px 0px 5px #c09c7c;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform, 0.3s, linear, 0.25s;
+}
+
+.btns button:hover {
+  filter: brightness(95%);
 }

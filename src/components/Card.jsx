@@ -4,7 +4,7 @@ import '../styles/Card.css';
 function Card({ imgUrl, increaseScore, endGame, shuffleCards, cardsShowing, setCardsShowing }) {
   const [isSelected, setIsSelected] = useState(false);
 
-  const handleClick = () => {
+  async function handleClick() {
     if (!isSelected) {
       setCardsShowing(false);
       setIsSelected(true);
@@ -16,7 +16,7 @@ function Card({ imgUrl, increaseScore, endGame, shuffleCards, cardsShowing, setC
     } else {
       endGame('lose');
     }
-  };
+  }
 
   return (
     <div className={`card ${cardsShowing ? 'front' : 'back'}`}>
