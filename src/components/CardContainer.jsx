@@ -11,6 +11,8 @@ function CardContainer({
   score,
   cardQuantity,
   setShowHelp,
+  cardsDisabled,
+  setCardsDisabled,
 }) {
   return (
     <div className="card-container">
@@ -27,6 +29,8 @@ function CardContainer({
             score={score}
             cardQuantity={cardQuantity}
             setShowHelp={setShowHelp}
+            cardsDisabled={cardsDisabled}
+            setCardsDisabled={setCardsDisabled}
           />
         );
       })}

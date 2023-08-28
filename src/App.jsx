@@ -69,6 +69,7 @@ function App() {
   const [cardQuantity, setCardQuantity] = useState(null);
   const [cardsShowing, setCardsShowing] = useState(false);
   const [showHelp, setShowHelp] = useState(false);
+  const [cardsDisabled, setCardsDisabled] = useState(false);
 
   const getAllVillagers = () => {
     fetchVillagers()
@@ -114,6 +115,7 @@ function App() {
     setGameStatus('loading');
     setCardQuantity(n);
     setScore(0);
+    setCardsDisabled(false);
     getRandomVillagers(allVillagers, n);
 
     setTimeout(() => {
@@ -176,6 +178,8 @@ function App() {
             score={score}
             cardQuantity={cardQuantity}
             setShowHelp={setShowHelp}
+            cardsDisabled={cardsDisabled}
+            setCardsDisabled={setCardsDisabled}
           />
         </>
       )}

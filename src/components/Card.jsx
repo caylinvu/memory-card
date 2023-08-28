@@ -11,18 +11,22 @@ function Card({
   score,
   cardQuantity,
   setShowHelp,
+  cardsDisabled,
+  setCardsDisabled,
 }) {
   const [isSelected, setIsSelected] = useState(false);
 
   async function handleClick() {
     setShowHelp(false);
     if (!isSelected) {
+      setCardsDisabled(true);
       setCardsShowing(false);
       setIsSelected(true);
       increaseScore();
       if (score + 1 < cardQuantity) {
         setTimeout(() => {
           shuffleCards();
+          setCardsDisabled(false);
           setCardsShowing(true);
         }, 800);
       }
@@ -35,7 +39,7 @@ function Card({
     <div className={`card ${cardsShowing ? 'front' : 'back'}`}>
       <div className="card-inner">
         <div className="card-front">
-          <button className="card-btn" onClick={handleClick}>
+          <button className="card-btn" onClick={handleClick} disabled={cardsDisabled}>
             <img src={imgUrl} className="card-img" draggable={false} />
           </button>
         </div>
