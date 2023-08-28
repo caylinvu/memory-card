@@ -208,25 +208,8 @@ function App() {
 
 export default App;
 
-// TO DO
-
-// possibly move api logic around (to card container component???)
-
-// figure out why some images don't load immediately
-
-// maybe remove loading screen???
-
-//
-
-// NOTES
-
-// ***** for now, leave API fetch in App component and pass currentVillager state down to CardContainer component
-// if end up not using currentVillager state anywhere else, can move to CardContainer component
-
-// random villager useEffect should only run on mount and each time a new game starts
-
-// add animal crossing logo to start up screen and have shrink to left side during game
-
 // TO DO LATER
 
 // if user wins, add ability to "keep playing" to add two additional cards and continue run of game with current high score
+
+// figure out why some images don't load immediately and sync with loading screen
