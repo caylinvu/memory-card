@@ -152,7 +152,7 @@ function App() {
   }, [score, cardQuantity, endGame]);
 
   return (
-    <div>
+    <>
       {gameStatus == 'start' ? (
         <StartScreen playGame={playGame} />
       ) : gameStatus == 'loading' ? (
@@ -202,7 +202,7 @@ function App() {
         />
       )}
       {showHelp && <ShowHelp />}
-    </div>
+    </>
   );
 }
 
@@ -211,12 +211,6 @@ export default App;
 // TO DO
 
 // possibly move api logic around (to card container component???)
-
-// maybe add local storage for high score?????
-
-// maybe add ability to continue playing with same score???
-
-// add transitions to pages!!!!
 
 // figure out why some images don't load immediately
 
@@ -232,3 +226,7 @@ export default App;
 // random villager useEffect should only run on mount and each time a new game starts
 
 // add animal crossing logo to start up screen and have shrink to left side during game
+
+// TO DO LATER
+
+// if user wins, add ability to "keep playing" to add two additional cards and continue run of game with current high score

@@ -6,7 +6,7 @@
 
 body {
   max-width: 1300px;
-  margin: auto;
+  margin: 0 auto;
   background: url('/public/background.jpeg') no-repeat center center fixed;
   background-size: cover;
   font-family: 'Bree Serif', serif;

@@ -1,9 +1,13 @@
-.start-screen {
+.start-container {
   position: absolute;
   top: 40%;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+.start-screen {
   text-align: center;
+  animation: grow 0.3s linear 1;
 }
 
 .start-logo {
@@ -36,4 +40,44 @@
 
 .difficulty-btns button:hover {
   transform: scale(1.1);
+}
+
+@keyframes grow {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+@media (max-height: 650px) {
+  .start-container {
+    top: auto;
+    transform: translate(-50%, 0);
+  }
+
+  .start-screen {
+    padding-top: 30px;
+    padding-bottom: 50px;
+  }
+}
+
+@media (max-width: 400px) {
+  .start-logo {
+    width: 300px;
+  }
+
+  .start-screen h1 {
+    font-size: 40px;
+  }
+
+  .difficulty-btns {
+    align-items: center;
+    flex-direction: column;
+  }
+
+  .difficulty-btns button {
+    width: 250px;
+  }
 }
