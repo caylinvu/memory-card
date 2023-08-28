@@ -5,3 +5,23 @@
   transform: translate(-50%, -50%);
   text-align: center;
 }
+
+.loading img {
+  filter: invert(35%) sepia(18%) saturate(1574%) hue-rotate(346deg) brightness(95%) contrast(83%);
+  animation: animate 1s linear infinite;
+  width: 80px;
+}
+
+.loading p {
+  padding-top: 25px;
+  font-size: 25px;
+}
+
+@keyframes animate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
