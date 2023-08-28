@@ -104,6 +104,7 @@ function App() {
       setCardsShowing(false);
       if (score > highScore) {
         setHighScore(score);
+        localStorage.setItem('highScore', JSON.stringify(score));
       }
     },
     [highScore, score],
@@ -136,6 +137,11 @@ function App() {
   // run API call once on initial component mount
   useEffect(() => {
     getAllVillagers();
+    if (!localStorage.getItem('highScore')) {
+      return;
+    } else {
+      setHighScore(JSON.parse(localStorage.getItem('highScore')));
+    }
   }, []);
 
   // check if game is over by comparing score to totalRounds
@@ -203,8 +209,6 @@ function App() {
 export default App;
 
 // TO DO
-
-// maybe add a button you can click on to display pop up with instructions
 
 // possibly move api logic around (to card container component???)
 
