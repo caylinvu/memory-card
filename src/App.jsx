@@ -146,7 +146,7 @@ function App() {
         <LoadingScreen />
       ) : (
         <>
-          <Header />
+          <Header quit={quit} />
           <ScoreContainer
             score={score}
             highScore={highScore}
@@ -195,10 +195,6 @@ export default App;
 
 // TO DO
 
-// style loading screen
-
-// figure out why some images don't load immediately
-
 // maybe add a button you can click on to display pop up with instructions
 
 // add clicking on logo to go home OR maybe get rid of logo on game screen
@@ -218,6 +214,8 @@ export default App;
 // maybe add ability to continue playing with same score???
 
 // add transitions to pages!!!!
+
+// figure out why some images don't load immediately
 
 //
 

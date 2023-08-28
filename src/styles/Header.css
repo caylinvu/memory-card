@@ -7,6 +7,12 @@
   width: 200px;
   position: absolute;
   left: 15px;
+  cursor: pointer;
+  transition: transform, 0.3s, linear, 0.25s;
+}
+
+.logo-img:hover {
+  transform: scale(1.07);
 }
 
 .header-txt {
