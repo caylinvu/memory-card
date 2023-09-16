@@ -10,7 +10,7 @@
 }
 
 .end-container {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -69,4 +69,14 @@
 
 .btns button:hover {
   filter: brightness(95%);
+}
+
+@media (max-width: 710px) {
+  .end-popup {
+    padding: 20px 35px;
+  }
+
+  .btns {
+    flex-direction: column;
+  }
 }
